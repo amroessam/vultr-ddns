@@ -1,0 +1,24 @@
+{
+  "name": "vultr-ddns",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "config": "ts-node cli add"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "cron": "^2.1.0",
+    "cronstrue": "^2.11.0",
+    "prompts": "^2.4.2",
+    "ts-node": "^10.9.1",
+    "yaml": "^2.1.1"
+  },
+  "devDependencies": {
+    "@types/cron": "^2.0.0",
+    "@types/prompts": "^2.0.14"
+  }
+}

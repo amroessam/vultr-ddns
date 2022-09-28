@@ -1,0 +1,10 @@
+- domain: corona.me
+  apiKey: XXXXXXXXXXXXXXXXXXXXXXXXXX
+  checkInterval: "* * * * *"
+  records:
+    - france
+    - paris.france
+    - lyon.france
+  excludeList:
+    - london
+    - amsterdam
