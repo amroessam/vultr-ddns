@@ -90,11 +90,11 @@ const updateRemoteRecordForDomain = async (domain: string, apiKey: string, recor
 }
 const getIPv4 = async () => {
   try {
-    const req = await axios.get('https://ip4.seeip.org')
+    const req = await axios.get('https://api.ipify.org')
     return req.data
   } catch (error) {
     console.log('[!] could not get current ip')
-    return ''
+    throw error
   }
 }
 
@@ -105,8 +105,14 @@ const watchDomain = async (domainEntry: {
   records: string[],
   excludeList: string[]
 }) => {
-  const currentIPv4 = await getIPv4()
-  console.log('[*] Current public IPv4: ' + currentIPv4)
+  let currentIPv4: string
+  try {
+    currentIPv4 = await getIPv4()
+    console.log('[*] Current public IPv4: ' + currentIPv4)
+  } catch (error) {
+    console.log('[!] Can\'t set domain records: ' + domainEntry.records)
+    return
+  }
   const remoteRecords = await getAllRecordsForDomain(domainEntry.domain, domainEntry.apiKey) || []
   const localRecords = domainEntry.records
   const outOfSyncRecords = remoteRecords.filter(r => !domainEntry.excludeList.find(lr => lr === r.name) && r.data !== currentIPv4)
