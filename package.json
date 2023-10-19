@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "config": "ts-node cli add"
+    "config": "ts-node cli.ts add",
+    "start": "ts-node cli.ts"
   },
   "keywords": [],
   "author": "",
